@@ -20,9 +20,9 @@ test('Login as Member', async ({ page }) => {
 
   // Login as Admin
   await page.getByRole('button', { name: 'Login' }).click();
-  await page.locator('[id="_r_4_-form-item"]').fill('jon+solarus@memberup.com');
+  await page.locator('[id="_r_4_-form-item"]').fill('jon+dw@memberup.com');
   await page.locator('[id="_r_4_-form-item"]').press('Tab');
   await page.locator('[id="_r_5_-form-item"]').fill('Test123456');
   await page.getByTestId('login-submit').click();
-  await expect(page.getByRole('button', { name: 'Hou Yi Solarus' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Dean Winchester' })).toBeVisible();
 });
