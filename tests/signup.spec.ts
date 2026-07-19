@@ -1,8 +1,8 @@
 import { test, expect } from '@playwright/test';
-import { generateRandomString } from './helpers';
+import { generateRandomString, goToUrl } from './helpers';
 
 test('Signup as Member', async ({ page }) => {
-  await page.goto('https://dev.memberup.com/dev-automation-jon');
+  await goToUrl(page);
 
   // Expect a title "to contain" a substring.
   await expect(page).toHaveTitle(/DEV Automation/);

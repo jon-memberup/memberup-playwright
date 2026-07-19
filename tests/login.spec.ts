@@ -1,28 +1,13 @@
 import { test, expect } from '@playwright/test';
+import { loginAsAdmin, loginAsMember } from './helpers';
 
 test('Login as Admin', async ({ page }) => {
-  await page.goto('https://dev.memberup.com/dev-automation-jon');
-
-  // Login as Admin
-  await page.getByRole('button', { name: 'Login' }).click();
-  await page.locator('[id="_r_4_-form-item"]').fill('jon+auto@memberup.com');
-  await page.locator('[id="_r_4_-form-item"]').press('Tab');
-  await page.locator('[id="_r_5_-form-item"]').fill('Test123456');
-  await page.getByTestId('login-submit').click();
+  await loginAsAdmin(page);
   await expect(page.getByRole('button', { name: 'DEV Automation (Jon)' })).toBeVisible();
 });
 
 test('Login as Member', async ({ page }) => {
-  await page.goto('https://dev.memberup.com/dev-automation-jon');
-
-  // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/DEV Automation/);
-
-  // Login as Admin
-  await page.getByRole('button', { name: 'Login' }).click();
-  await page.locator('[id="_r_4_-form-item"]').fill('jon+dw@memberup.com');
-  await page.locator('[id="_r_4_-form-item"]').press('Tab');
-  await page.locator('[id="_r_5_-form-item"]').fill('Test123456');
-  await page.getByTestId('login-submit').click();
+  await loginAsMember(page);
   await expect(page.getByRole('button', { name: 'Dean Winchester' })).toBeVisible();
+  //await expect(page.getByRole('button', { name: 'Dean Winchester' })).toBeVisible();
 });
